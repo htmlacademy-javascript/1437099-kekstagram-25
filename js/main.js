@@ -4,6 +4,9 @@ function getRandomInt(a, b) {
   return Math.floor(Math.random() * (to - from + 1) + from);
 };
 
+getRandomInt(5, 8);
+
 function checkStringLength(string, length) {
   return string.length <= length;
 }
+checkStringLength('привет', 8);
