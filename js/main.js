@@ -46,11 +46,9 @@ const AUTHOR_NAMES = [
 const fotosIndexes = Array.from({ length: FOTOS_NUMBER }, (v, k) => k + 1);
 const urlIndexes = fotosIndexes.slice();
 
-const getRandomArrayElement = (elements) => {
-  return elements[getRandomPositiveInteger(0, elements.length - 1)];
-};
+const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-const createFotoCard = () => {
+function createFotoCard() {
   const commentsNumber = getRandomPositiveInteger(1, 10);
   const commentsIndexes = Array.from({ length: commentsNumber }, (v, k) => k + 1);
   const createComment = () => {
@@ -78,7 +76,7 @@ const createFotoCard = () => {
     likes: getRandomPositiveInteger(15, 200),
     comments: Array.from({ length: commentsNumber }, createComment)
   };
-};
+}
 
 const getFotos = Array.from({ length: FOTOS_NUMBER }, createFotoCard);
 console.log(getFotos);
