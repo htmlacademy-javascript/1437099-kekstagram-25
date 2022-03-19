@@ -1,8 +1,7 @@
 function getRandomPositiveInteger(a, b) {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
+  return Math.floor(Math.random() * (upper - lower + 1) + lower);
 }
 
 function checkStringLength(string, length) {
@@ -43,14 +42,15 @@ const AUTHOR_NAMES = [
   'Анастасия',
   'Елена',
 ];
+const AVATARS_NUMBER = 6;
 const fotosIndexes = Array.from({ length: FOTOS_NUMBER }, (v, k) => k + 1);
 const urlIndexes = fotosIndexes.slice();
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
 function createFotoCard() {
-  const commentsNumber = getRandomPositiveInteger(1, 10);
-  const commentsIndexes = Array.from({ length: commentsNumber }, (v, k) => k + 1);
+  const commentsNumber = getRandomPositiveInteger(1, 100);//
+  const commentsIndexes = Array.from({ length: commentsNumber }, (currentValue, index) => index + 1);
   const createComment = () => {
     const randomMessageLength = getRandomPositiveInteger(1, 2);
     const getmessageFrase = () => {
@@ -60,7 +60,7 @@ function createFotoCard() {
       }
       return messageFrase.join(' ');
     };
-    const AVATARS_NUMBER = 6;
+
     return {
       id: commentsIndexes.shift(),
       avatar: `img/avatar-${getRandomPositiveInteger(1, AVATARS_NUMBER)}.svg`,
@@ -71,7 +71,7 @@ function createFotoCard() {
 
   return {
     id: fotosIndexes.shift(),
-    url: `photos / ${urlIndexes.pop()}.jpg`,
+    url: `photos/${urlIndexes.pop()}.jpg`,
     description: getRandomArrayElement(DESCRIPTIONS),
     likes: getRandomPositiveInteger(15, 200),
     comments: Array.from({ length: commentsNumber }, createComment)
@@ -79,4 +79,3 @@ function createFotoCard() {
 }
 
 const getFotos = Array.from({ length: FOTOS_NUMBER }, createFotoCard);
-console.log(getFotos);
