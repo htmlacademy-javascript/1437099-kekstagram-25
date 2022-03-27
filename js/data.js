@@ -1,6 +1,4 @@
-import { getRandomPositiveInteger } from './utils/get-random-positive-integer.js';
-import { getRandomArrayElement } from './utils/get-random-array-element.js';
-import { makeIdGenerator } from './utils/make-id-generator.js';
+import { getRandomPositiveInteger, getRandomArrayElement, makeIdGenerator } from './utils.js';
 
 const FOTOS_NUMBER = 25;
 const DESCRIPTIONS = [
