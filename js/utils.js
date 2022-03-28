@@ -1,12 +1,11 @@
-function checkStringLength(string, length) {
-  return string.length <= length;
-}
+const checkStringLength = (string, length) => string.length <= length;
 
-function getRandomPositiveInteger(a, b) {
+
+const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
   return Math.floor(Math.random() * (upper - lower + 1) + lower);
-}
+};
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
