@@ -1,6 +1,4 @@
-import { getRandomPositiveInteger } from './utils/get-random-positive-integer.js';
-import { getRandomArrayElement } from './utils/get-random-array-element.js';
-import { makeIdGenerator } from './utils/make-id-generator.js';
+import { getRandomPositiveInteger, getRandomArrayElement, makeIdGenerator } from './utils.js';
 
 const FOTOS_NUMBER = 25;
 const DESCRIPTIONS = [
@@ -39,7 +37,7 @@ const fotosIndexes = Array.from({ length: FOTOS_NUMBER }, (currentValue, index) 
 const urlIndexes = fotosIndexes.slice();
 const idGenerator = makeIdGenerator();
 
-function createFotoCard() {
+const createFotoCard = () => {
   const commentsNumber = getRandomPositiveInteger(1, 100);
   const createComment = () => {
     const randomMessageLength = getRandomPositiveInteger(1, 2);
@@ -65,7 +63,7 @@ function createFotoCard() {
     likes: getRandomPositiveInteger(15, 200),
     comments: Array.from({ length: commentsNumber }, createComment)
   };
-}
+};
 
-const getFotos = Array.from({ length: FOTOS_NUMBER }, createFotoCard);
+const getFotos = () => Array.from({ length: FOTOS_NUMBER }, createFotoCard);
 export { getFotos };
