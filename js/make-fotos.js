@@ -1,8 +1,14 @@
 import { getFotos } from './data.js';
+import { showBigFoto } from './show-big-foto.js';
+import './close-modal.js';
+
 const userPictures = document.querySelector('.pictures');
 const templateFragment = document.querySelector('#picture').content.querySelector('.picture');
 
 const similarFotos = getFotos();
+
+const bigPictureElement = document.querySelector('.big-picture');
+const bodyElement = document.querySelector('body');
 const fragment = document.createDocumentFragment();
 
 const completeTemplateFotos = () => {
@@ -11,10 +17,12 @@ const completeTemplateFotos = () => {
     fotoElement.querySelector('.picture__img').src = foto.url;
     fotoElement.querySelector('.picture__comments').textContent = foto.comments.length;
     fotoElement.querySelector('.picture__likes').textContent = foto.likes;
-
     fragment.appendChild(fotoElement);
+
+    fotoElement.addEventListener('click', () => { showBigFoto(foto); });
   });
   userPictures.appendChild(fragment);
 };
 
-export { completeTemplateFotos };
+export { completeTemplateFotos, bigPictureElement, bodyElement };
+
