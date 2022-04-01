@@ -19,7 +19,7 @@ const completeTemplateFotos = () => {
     fotoElement.querySelector('.picture__likes').textContent = foto.likes;
     fragment.appendChild(fotoElement);
 
-    fotoElement.addEventListener('click', (evt) => { showBigFoto(evt.target); });
+    fotoElement.addEventListener('click', () => { showBigFoto(foto); });
   });
   userPictures.appendChild(fragment);
 };

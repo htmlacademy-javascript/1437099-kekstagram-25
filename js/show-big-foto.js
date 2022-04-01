@@ -1,11 +1,13 @@
 import { bigPictureElement, bodyElement } from './make-fotos.js';
+import { getHidden } from './get-hidden.js';
+
 const showBigFoto = ({ url, description, likes, comments }) => {
   bigPictureElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
   const commentsCountElement = document.querySelector('.social__comment-count');
-  commentsCountElement.classList.add('hidden');
   const commentsLoaderElement = document.querySelector('.comments-loader');
-  commentsLoaderElement.classList.add('hidden');
+  getHidden(commentsCountElement);
+  getHidden(commentsLoaderElement);
 
   const bigImageElement = bigPictureElement.querySelector('.big-picture__img img');
   bigImageElement.src = url;
