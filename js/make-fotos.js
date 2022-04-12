@@ -1,6 +1,6 @@
 import { getFotos } from './data.js';
 import { showBigFoto } from './show-big-foto.js';
-import './close-modal.js';
+
 
 const userPictures = document.querySelector('.pictures');
 const templateFragment = document.querySelector('#picture').content.querySelector('.picture');

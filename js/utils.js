@@ -14,4 +14,8 @@ const makeIdGenerator = () => {
   return () => { id = id + 1; return id; };
 };
 
-export { getRandomPositiveInteger, getRandomArrayElement, checkStringLength, makeIdGenerator };
+const isEscapeKey = (evt) => {
+  return evt.key === 'Escape';
+};
+
+export { getRandomPositiveInteger, getRandomArrayElement, checkStringLength, makeIdGenerator, isEscapeKey };

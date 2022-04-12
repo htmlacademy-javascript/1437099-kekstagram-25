@@ -1,9 +1,14 @@
-import { bigPictureElement, bodyElement } from './make-fotos.js';
+import { bigPictureElement } from './make-fotos.js';
 import { getHidden } from './get-hidden.js';
+import { closeBigFotoModal, openBigFotoModal } from './picture-modal.js';
+
+const bigPictureClose = document.querySelector('.big-picture__cancel');
+bigPictureClose.addEventListener('click', ()=>{
+  closeBigFotoModal();
+});
 
 const showBigFoto = ({ url, description, likes, comments }) => {
-  bigPictureElement.classList.remove('hidden');
-  bodyElement.classList.add('modal-open');
+  openBigFotoModal();
   const commentsCountElement = document.querySelector('.social__comment-count');
   const commentsLoaderElement = document.querySelector('.comments-loader');
   getHidden(commentsCountElement);
