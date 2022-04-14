@@ -14,19 +14,16 @@ form.addEventListener('submit',(evt)=>{
   evt.preventDefault();
   const isValid = pristine.validate();
   if (isValid) {
-    const hashtag = form.querySelector('.text__hashtags');
-    const re = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
-    const hastagInput = hashtag.value.split(' ');
-    if(hastagInput.length > 5){ console.log('нельзя отправлять, не больше 5 хэштегов'); }
-    if(hastagInput.every((e, i, a) => a.indexOf(e) === i)){ console.log('нет повторяющихся') } else{ console.log('повторяющиеся хэштеги')};
-    for (let i=0; i<hastagInput.length; i++){
-      if(!re.test(hastagInput[i])){
-        console.log('неверный хэштег');
+    const hashtagInput = form.querySelector('.text__hashtags');
+    pristine.addValidator(hashtagInput, (value) => {
+      const re = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
+      const hastagInputArray = value.split(' ');
+      if (hastagInputArray.length <= 5 && hastagInputArray.every( (e, i, a) => a.indexOf(e) === i ) && hastagInputArray.forEach((el)=>re.test(el))){
+        return true;
       }
-    }
+      return false;
+    },  'errorMessage', 2, false);
   } else {
     console.log('нельзя отправлять');
   }
 });
-
-
