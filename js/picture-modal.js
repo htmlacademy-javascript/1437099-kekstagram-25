@@ -1,7 +1,7 @@
-import { bigPictureElement, bodyElement } from './make-fotos.js';
+import { bigPictureElement } from './make-fotos.js';
 import { getHidden } from './get-hidden.js';
 import {isEscapeKey} from './utils.js';
-
+const bodyElement = document.querySelector('body');
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
