@@ -1,5 +1,5 @@
 import './data.js';
-import './make-fotos.js';
 import { completeTemplateFotos } from './make-fotos.js';
+import './form.js';
 
 completeTemplateFotos();

@@ -1,6 +1,6 @@
 import { getFotos } from './data.js';
 import { showBigFoto } from './show-big-foto.js';
-import './close-modal.js';
+
 
 const userPictures = document.querySelector('.pictures');
 const templateFragment = document.querySelector('#picture').content.querySelector('.picture');
@@ -8,7 +8,6 @@ const templateFragment = document.querySelector('#picture').content.querySelecto
 const similarFotos = getFotos();
 
 const bigPictureElement = document.querySelector('.big-picture');
-const bodyElement = document.querySelector('body');
 const fragment = document.createDocumentFragment();
 
 const completeTemplateFotos = () => {
@@ -24,5 +23,5 @@ const completeTemplateFotos = () => {
   userPictures.appendChild(fragment);
 };
 
-export { completeTemplateFotos, bigPictureElement, bodyElement };
+export { completeTemplateFotos, bigPictureElement};
 
