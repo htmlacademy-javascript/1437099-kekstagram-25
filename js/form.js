@@ -22,9 +22,6 @@ pristine.addValidator(hashtagInput, (value) => {
 
 form.addEventListener('submit',(evt)=>{
   evt.preventDefault();
-  const isValid = pristine.validate();
-  if (isValid) {
-    console.log('можно отправлять');
-  }
+  pristine.validate();
   evt.target.reset();
 });
