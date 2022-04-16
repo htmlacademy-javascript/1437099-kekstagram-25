@@ -14,8 +14,7 @@ const hashtagInput = form.querySelector('.text__hashtags');
 pristine.addValidator(hashtagInput, (value) => {
   const re = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
   const hastagInputArray = value.split(' ');
-  console.log(hastagInputArray);
-  if (hastagInputArray.length <= 5 && hastagInputArray.every( (e, i, a) => a.indexOf(e) === i ) && hastagInputArray.forEach((element) => re.test(element))){
+  if (hastagInputArray.length <= 5 && hastagInputArray.every( (element, index, array) => array.indexOf(element) === index ) && hastagInputArray.every((element) => re.test(element))){
     return true;
   }
   return false;
@@ -26,7 +25,6 @@ form.addEventListener('submit',(evt)=>{
   const isValid = pristine.validate();
   if (isValid) {
     console.log('можно отправлять');
-  } else {
-    console.log('нельзя отправлять');
   }
+  evt.target.reset();
 });

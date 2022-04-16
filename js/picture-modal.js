@@ -33,19 +33,19 @@ const loadElement =  document.getElementById('upload-file');
 loadElement.addEventListener('change', ()=>{
   formEditElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
+});
 
-  formEditClose.addEventListener('click', ()=>{
+formEditClose.addEventListener('click', ()=>{
+  formEditElement.classList.add('hidden');
+  bodyElement.classList.remove('modal-open');
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (isEscapeKey(evt)){
+    evt.preventDefault();
     formEditElement.classList.add('hidden');
     bodyElement.classList.remove('modal-open');
-  });
-
-  document.addEventListener('keydown', (evt) => {
-    if (isEscapeKey(evt)) {
-      evt.preventDefault();
-      formEditElement.classList.add('hidden');
-      bodyElement.classList.remove('modal-open');
-    }
-  });
+  }
 });
 
 export { closeBigFotoModal, openBigFotoModal };
