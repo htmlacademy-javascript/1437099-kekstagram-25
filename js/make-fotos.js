@@ -1,16 +1,11 @@
-import { getFotos } from './data.js';
 import { showBigFoto } from './show-big-foto.js';
-
-
 const userPictures = document.querySelector('.pictures');
 const templateFragment = document.querySelector('#picture').content.querySelector('.picture');
-
-const similarFotos = getFotos();
 
 const bigPictureElement = document.querySelector('.big-picture');
 const fragment = document.createDocumentFragment();
 
-const completeTemplateFotos = () => {
+const completeTemplateFotos = (similarFotos) => {
   similarFotos.forEach((foto) => {
     const fotoElement = templateFragment.cloneNode(true);
     fotoElement.querySelector('.picture__img').src = foto.url;

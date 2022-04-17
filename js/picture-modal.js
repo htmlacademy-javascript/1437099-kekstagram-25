@@ -12,7 +12,6 @@ const onPopupEscKeydown = (evt) => {
 function openBigFotoModal(){
   bigPictureElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
-
   document.addEventListener('keydown', (evt) => {
     onPopupEscKeydown(evt);
   });
@@ -25,27 +24,29 @@ function closeBigFotoModal(){
     onPopupEscKeydown(evt);
   });
 }
-const formEditClose = document.querySelector('.img-upload__cancel');
 
+const formEditClose = document.querySelector('.img-upload__cancel');
 const formEditElement = document.querySelector('.img-upload__overlay');
 const loadElement =  document.getElementById('upload-file');
+
+function closeForm(){
+  getHidden(formEditElement);
+  bodyElement.classList.remove('modal-open');
+}
+
+formEditClose.addEventListener('click', closeForm);
+
+document.addEventListener('keydown', (evt) => {
+  if (isEscapeKey(evt)){
+    evt.preventDefault();
+    getHidden(formEditElement);
+    bodyElement.classList.remove('modal-open');
+  }
+});
 
 loadElement.addEventListener('change', ()=>{
   formEditElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
 });
 
-formEditClose.addEventListener('click', ()=>{
-  formEditElement.classList.add('hidden');
-  bodyElement.classList.remove('modal-open');
-});
-
-document.addEventListener('keydown', (evt) => {
-  if (isEscapeKey(evt)){
-    evt.preventDefault();
-    formEditElement.classList.add('hidden');
-    bodyElement.classList.remove('modal-open');
-  }
-});
-
-export { closeBigFotoModal, openBigFotoModal };
+export { closeBigFotoModal, openBigFotoModal, closeForm };
