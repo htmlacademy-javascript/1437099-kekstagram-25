@@ -1,3 +1,4 @@
+import {showError, showSuccess} from './utils.js';
 const bodyElement = document.querySelector('body');
 const fotoEditingElement = document.querySelector('.img-upload__overlay');
 const closeFormModalElement = document.getElementById('upload-cancel');
@@ -20,8 +21,23 @@ pristine.addValidator(hashtagInput, (value) => {
   return false;
 },  'errorMessage', 2, false);
 
-form.addEventListener('submit',(evt)=>{
-  evt.preventDefault();
-  pristine.validate();
-  evt.target.reset();
-});
+const setUserFormSubmit = (onSuccess) => {
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+    if (isValid) {
+      const formData = new FormData(evt.target);
+      fetch('https://25.javascript.pages.academy/kekstagram',
+        {
+          method: 'POST',
+          body: formData
+        },
+      ).then(() => onSuccess()).then(() => showSuccess())
+        .catch(() => showError());
+      evt.target.reset();
+    }
+  });
+};
+export {setUserFormSubmit};
+
+
