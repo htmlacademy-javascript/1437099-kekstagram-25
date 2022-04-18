@@ -38,6 +38,27 @@ const setUserFormSubmit = (onSuccess) => {
     }
   });
 };
+
+const scaleSmallerBtn = fotoEditingElement.querySelector('.scale__control--smaller');
+const scaleBiggerBtn = fotoEditingElement.querySelector('.scale__control--bigger');
+const scaleValue = fotoEditingElement.querySelector('.scale__control--value');
+const sliderScaleElement = fotoEditingElement.querySelector('.img-upload__effect-level');
+
+noUiSlider.create(sliderScaleElement, {
+  range: {
+    min: 25,
+    max: 100,
+  },
+  start: 50,
+  step: 25,
+  connect: 'lower',
+});
+sliderScaleElement.noUiSlider.on('update', () => {
+  const valueScale = scaleValue.value = sliderScaleElement.noUiSlider.get();
+  const imagePreview = document.querySelector('img-upload__preview');
+  imagePreview.style.transform = `scale(${valueScale/100})`;
+});
+
 export {setUserFormSubmit};
 
 
